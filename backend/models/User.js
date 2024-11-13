@@ -1,40 +1,37 @@
-// User.js
-const mongoose = require("./db");
+// backend/models/User.js
+const mongoose = require('../db');  // Import the established mongoose connection
 
-const userSchema = new mongoose.Schema(
-  {
+// Define the user schema
+const userSchema = new mongoose.Schema({
     username: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true,
-      lowercase: true,
-      minLength: 3,
-      maxLength: 30,
+        type: String,
+        required: true,
+        unique: true,
+        trim: true,
+        lowercase: true,
+        minLength: 3,
+        maxLength: 30
     },
     password: {
-      type: String,
-      required: true,
-      minLength: 6,
+        type: String,
+        required: true,
+        minLength: 6
     },
     firstName: {
-      type: String,
-      required: true,
-      trim: true,
-      maxLength: 50,
+        type: String,
+        required: true,
+        trim: true,
+        maxLength: 50
     },
     lastName: {
-      type: String,
-      required: true,
-      trim: true,
-      maxLength: 50,
-    },
-  },
-  {
-    timestamps: true, // Adds createdAt and updatedAt fields
-  }
-);
+        type: String,
+        required: true,
+        trim: true,
+        maxLength: 50
+    }
+});
 
-// Export the User model
-const User = mongoose.model("User", userSchema);
+// Create the User model
+const User = mongoose.model('User', userSchema);
+
 module.exports = User;
