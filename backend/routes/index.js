@@ -1,8 +1,12 @@
-// backend/app.js
+// backend/index.js
 const express = require('express');
+const router = express.Router();
+const userRouter = require("./user");
 const User = require('./models/User');  // Import the User model
 
-const app = express();
+const app = express.Router();
+
+router.use("/user", userRouter)
 
 app.use(express.json());
 
@@ -21,3 +25,5 @@ app.post('/signup', async (req, res) => {
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
 });
+
+module.exports = router ;
